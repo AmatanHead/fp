@@ -14,8 +14,8 @@ fizz = map fizzify [1..]
 
 -- 4 ---------------------------------------------------------------------------
 decsplit :: Integral t => t -> [t]
-decsplit 0 = []
-decsplit n = (n `mod` 10) : (decsplit $ n `div` 10)
+decsplit n | n < 9     = [n]
+           | otherwise = (n `mod` 10) : (decsplit $ n `div` 10)
 
 -- 5 ---------------------------------------------------------------------------
 luhn :: Integral t => [t] -> Bool
