@@ -18,6 +18,7 @@ saynumber n feminine | n <  0    = unwords $ minus : say (-n) feminine
         thnsplit 0 = []
         thnsplit n = (n `mod` 1000) : (thnsplit $ n `div` 1000)
 
+        say10 _        (_,    0) = []
         say10 feminine (0,    n) = say n feminine
      -- say10 _        (1,    1) = [agree 1 (snd $ thns !! 0)]  -- uncomment to replace 'one thousand' with just 'thousand'
         say10 _        (rank, n) = (say n feminine) ++ [agree n thn]
