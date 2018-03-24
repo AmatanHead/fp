@@ -14,7 +14,7 @@ fizz = map fizzify [1..]
 
 -- 4 ---------------------------------------------------------------------------
 decsplit :: Integral t => t -> [t]
-decsplit n | n < 0     = map (0-) decsplit -n
+decsplit n | n < 0     = map (0-) $ decsplit (-n)
            | n < 9     = [n]
            | otherwise = (n `mod` 10) : (decsplit $ n `div` 10)
 
@@ -56,7 +56,7 @@ main = do
     putStrLn $ show $ take 20 fizz
 
     putStr   $ id   $ "4:  "
-    putStrLn $ show $ decsplit -1234560
+    putStrLn $ show $ decsplit $ -1234560
 
     putStr   $ id   $ "5:  4561 2612 1234 5464 (False) -> "
     putStrLn $ show $ luhn [4, 5, 6, 1, 2, 6, 1, 2, 1, 2, 3, 4, 5, 4, 6, 4];
